@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://nure.ua/manivchuk/SummaryTask3/entity"
+            xmlns:tns="http://nure.ua/manivchuk/SummaryTask3/entity">
+
+    <xsd:element name="guns">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="gun" type="tns:Gun" minOccurs="1"
+                             maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="Gun">
+        <xsd:sequence>
+            <xsd:element name="Model" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="Handy" type="tns:Handy" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="Origin" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="Ttc" type="tns:Ttc" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="Material" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:simpleType name="Handy">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="One_handed"/>
+            <xsd:enumeration value="Two_handed"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="Ttc">
+        <xsd:all>
+            <xsd:element name="range" type="tns:Range" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="effective" type="tns:Effective" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="holder" type="xsd:boolean"/>
+            <xsd:element name="optics" type="xsd:boolean"/>
+        </xsd:all>
+    </xsd:complexType>
+
+    <xsd:simpleType name="Range">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="short-[1-4][0-9]{2}"/>
+            <xsd:pattern value="middle-[5-9][0-9]{2}"/>
+            <xsd:pattern value="high-[0-4][0-9]{3}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="Effective">
+        <xsd:restriction base="xsd:int">
+            <xsd:minExclusive value="5"/>
+            <xsd:maxExclusive value="4999"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

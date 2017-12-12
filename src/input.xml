@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<st3:guns xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:st3="http://nure.ua/manivchuk/SummaryTask3/entity"
+	xsi:schemaLocation="http://nure.ua/manivchuk/SummaryTask3/entity input.xsd">
+
+    <gun>
+        <Model>Model1</Model>
+        <Handy>One_handed</Handy>
+        <Origin>USA</Origin>
+        <Ttc>
+            <range>short-400</range>
+            <effectiveRange>100</effectiveRange>
+            <holder>true</holder>
+            <optics>true</optics>
+        </Ttc>
+        <Material>Alum</Material>
+    </gun>
+
+</st3:guns>
