@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<guns>
+<gun>
+<Model>Model1</Model>
+<Handys/>
+<Origin>USA</Origin>
+<Ttc>
+<Effective>0</Effective>
+</Ttc>
+</gun>
+</guns>

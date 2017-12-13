@@ -5,7 +5,9 @@
 
     <gun>
         <Model>Model1</Model>
-        <Handy>One_handed</Handy>
+        <Handys>
+            <handy>One_handed</handy>
+        </Handys>
         <Origin>USA</Origin>
         <Ttc>
             <range>MIDDLE</range>

@@ -14,6 +14,10 @@ import ua.nure.manivchuk.SummaryTask3.entity.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -60,29 +64,46 @@ public class DomController {
         Element qElement = (Element) qNode;
         Node qtNode = qElement.getElementsByTagName(XML.MODEL.value()).item(0);
         gun.setModel(qtNode.getTextContent());
-        qtNode = qElement.getElementsByTagName(XML.HANDY.value()).item(0);
-        gun.setHandy(Handy.valueOf(qtNode.getTextContent()));
+
+        gun.setHandys(getHandys(qElement.getElementsByTagName(XML.HANDYS.value()).item(0)));
+
         qtNode = qElement.getElementsByTagName(XML.ORIGIN.value()).item(0);
         gun.setOrigin(qtNode.getTextContent());
 
         gun.setTtc(getTtc(qElement.getElementsByTagName(XML.TTC.value()).item(0)));
 
         qtNode = qElement.getElementsByTagName(XML.MATERIAL.value()).item(0);
-        gun.setMaterial(qtNode.getTextContent()));
+        gun.setMaterial(qtNode.getTextContent());
 
         return gun;
+    }
+
+    private final Handys getHandys(Node qNode) {
+        Handys handys = new Handys();
+        Element handyElem = (Element) qNode;
+        NodeList handyNodeList = handyElem.getElementsByTagName(XML.HANDY.value());
+        for(int i = 0; i < handyNodeList.getLength(); i++){
+            Handy handy = getHandy(handyNodeList.item(i));
+            handys.addHandy(handy);
+        }
+        return handys;
+    }
+
+    private Handy getHandy(Node qNode) {
+        Element elem = (Element) qNode;
+        return Handy.fromValue(elem.getTextContent());
     }
 
     private Ttc getTtc(final Node qNode) {
         Ttc ttc = new Ttc();
         Element qElement = (Element) qNode;
 
-        Node qtNode = qElement.getElementsByTagName(XML.RANGE.value()).item(0);
-        ttc.setRange(Range.valueOf(qtNode.getTextContent()));
-        qtNode = qElement.getElementsByTagName(XML.EFFECTIVE.value()).item(0);
-        ttc.setEffective(new Integer(qtNode.getTextContent()));
+//        Node qtNode = qElement.getElementsByTagName(XML.RANGE.value()).item(0);
+//        ttc.setRange(Range.valueOf(qtNode.getTextContent()));
+//        qtNode = qElement.getElementsByTagName(XML.EFFECTIVE.value()).item(0);
+//        ttc.setEffective(new Integer(qtNode.getTextContent()));
 
-        qtNode = qElement.getElementsByTagName(XML.HOLDER.value()).item(0);
+    Node    qtNode = qElement.getElementsByTagName(XML.HOLDER.value()).item(0);
         ttc.setHolder(Boolean.valueOf(qtNode.getTextContent()));
         qtNode = qElement.getElementsByTagName(XML.OPTICS.value()).item(0);
         ttc.setOptics(Boolean.valueOf(qtNode.getTextContent()));
@@ -106,9 +127,13 @@ public class DomController {
             nElement.setTextContent(gun.getModel());
             dElement.appendChild(nElement);
 
-            Element oElement = document.createElement(XML.HANDY.value());
-            oElement.setTextContent(String.valueOf(gun.getHandy()));
+            Element oElement = document.createElement(XML.HANDYS.value());
             dElement.appendChild(oElement);
+            for(Handy handy : gun.getHandys().getHandy()){
+                Element handyElement = document.createElement(XML.HANDY.value());
+                handyElement.setTextContent(handy.value());
+                oElement.appendChild(handyElement);
+            }
 
             Element pElement = document.createElement(XML.ORIGIN.value());
             pElement.setTextContent(String.valueOf(gun.getOrigin()));
@@ -119,11 +144,24 @@ public class DomController {
 
 //            Element range = document.createElement(XML.RANGE.value());
 
-            Element ecElement = document.createElement(XML.EFFECTIVE
-                    .value());
-            ecElement.setTextContent(String.valueOf(gun.getTypes().));
+            Element ecElement = document.createElement(XML.EFFECTIVE.value());
+            ecElement.setTextContent(String.valueOf(gun.getTtc().getEffective()));
             typesElement.appendChild(ecElement);
 
         }
+        return document;
     }
+    public static void saveToXML(final Guns guns, final String xmlFileName) throws ParserConfigurationException, TransformerException {
+        saveToXML(getDocument(guns), xmlFileName);
+    }
+
+    public static void saveToXML(final Document document, final String xmlFileName) throws TransformerException {
+        StreamResult result = new StreamResult(new File(xmlFileName));
+
+        TransformerFactory tf = TransformerFactory.newInstance();
+        Transformer t = tf.newTransformer();
+        t.setOutputProperty(OutputKeys.INDENT, "yes");
+        t.transform(new DOMSource(document), result);
+    }
+    public final Guns getGuns(){ return guns; }
 }

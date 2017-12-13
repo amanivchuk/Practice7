@@ -6,11 +6,12 @@
     <xsd:element name="guns">
         <xsd:complexType>
             <xsd:sequence>
-                <xsd:element name="gun" type="tns:Gun" minOccurs="1"
-                             maxOccurs="unbounded"/>
+                <xsd:element name="gun" type="tns:Gun" minOccurs="1" maxOccurs="unbounded"/>
             </xsd:sequence>
         </xsd:complexType>
     </xsd:element>
+
+
     <xsd:complexType name="Gun">
         <xsd:sequence>
             <xsd:element name="Model" type="xsd:string" minOccurs="1" maxOccurs="1"/>
@@ -21,6 +22,7 @@
         </xsd:sequence>
     </xsd:complexType>
 
+
     <xsd:simpleType name="Handy">
         <xsd:restriction base="xsd:string">
             <xsd:enumeration value="One_handed"/>
@@ -29,12 +31,12 @@
     </xsd:simpleType>
 
     <xsd:complexType name="Ttc">
-        <xsd:all>
-            <xsd:element name="range" type="tns:Range" minOccurs="0" maxOccurs="1"/>
-            <xsd:element name="effective" type="tns:Effective" minOccurs="0" maxOccurs="1"/>
+        <xsd:sequence>
+            <xsd:element name="range" type="tns:Range" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="effective" type="tns:Effective" minOccurs="1" maxOccurs="1"/>
             <xsd:element name="holder" type="xsd:boolean"/>
             <xsd:element name="optics" type="xsd:boolean"/>
-        </xsd:all>
+        </xsd:sequence>
     </xsd:complexType>
 
     <xsd:simpleType name="Range">
@@ -54,7 +56,7 @@
 </xsd:schema>
 
 <!--
-<xsd:pattern value="short-[1-4][0-9]{2}"/>
+            <xsd:pattern value="short-[1-4][0-9]{2}"/>
             <xsd:pattern value="middle-[5-9][0-9]{2}"/>
             <xsd:pattern value="high-[0-4][0-9]{3}"/>
 -->

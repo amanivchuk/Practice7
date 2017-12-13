@@ -11,10 +11,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlEnum
 public enum Handy {
 
-    @XmlEnumValue("One_handed")
     ONE_HANDED,
 
-    @XmlEnumValue("Two_handed")
     TWO_HANDED;
 
     public final String value(){

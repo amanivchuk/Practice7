@@ -9,14 +9,14 @@ import javax.xml.bind.annotation.XmlType;
  * Created by Lenovo on 12/12/2017.
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Gun", propOrder = {"model", "handy", "origin", "ttc", "material"})
+@XmlType(name = "Gun", propOrder = {"model", "handys", "origin", "ttc", "material"})
 public class Gun {
 
     @XmlElement(name = "Model", required = true)
     private String model;
 
-    @XmlElement(name = "Handy", required = true)
-    private Handy handy;
+    @XmlElement(name = "Handys", required = true)
+    private Handys handys;
 
     @XmlElement(name = "Origin", required = true)
     private String origin;
@@ -27,6 +27,7 @@ public class Gun {
     @XmlElement(name = "Material", required = true)
     private String material;
 
+
     public String getModel() {
         return model;
     }
@@ -35,12 +36,12 @@ public class Gun {
         this.model = model;
     }
 
-    public Handy getHandy() {
-        return handy;
+    public Handys getHandys() {
+        return handys;
     }
 
-    public void setHandy(Handy handy) {
-        this.handy = handy;
+    public void setHandys(Handys handys) {
+        this.handys = handys;
     }
 
     public String getOrigin() {
@@ -71,7 +72,7 @@ public class Gun {
     public String toString() {
         return "Gun{" +
                 "model='" + model + '\'' +
-                ", handy=" + handy +
+                ", handy=" + handys +
                 ", origin='" + origin + '\'' +
                 ", ttc=" + ttc +
                 ", material='" + material + '\'' +

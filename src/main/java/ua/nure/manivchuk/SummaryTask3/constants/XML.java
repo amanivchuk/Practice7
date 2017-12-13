@@ -22,6 +22,8 @@ public enum XML {
 	/**
 	 * Element.
 	 */
+	HANDYS("Handys"),
+
 	HANDY("Handy"),
 	/**
 	 * Element.
