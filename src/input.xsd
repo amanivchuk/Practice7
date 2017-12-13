@@ -39,16 +39,22 @@
 
     <xsd:simpleType name="Range">
         <xsd:restriction base="xsd:string">
-            <xsd:pattern value="short-[1-4][0-9]{2}"/>
-            <xsd:pattern value="middle-[5-9][0-9]{2}"/>
-            <xsd:pattern value="high-[0-4][0-9]{3}"/>
+            <xsd:enumeration value="SHORT"/>
+            <xsd:enumeration value="MIDDLE"/>
+            <xsd:enumeration value="HIGH"/>
         </xsd:restriction>
     </xsd:simpleType>
 
     <xsd:simpleType name="Effective">
-        <xsd:restriction base="xsd:int">
+        <xsd:restriction base="xsd:nonNegativeInteger">
             <xsd:minExclusive value="5"/>
             <xsd:maxExclusive value="4999"/>
         </xsd:restriction>
     </xsd:simpleType>
 </xsd:schema>
+
+<!--
+<xsd:pattern value="short-[1-4][0-9]{2}"/>
+            <xsd:pattern value="middle-[5-9][0-9]{2}"/>
+            <xsd:pattern value="high-[0-4][0-9]{3}"/>
+-->

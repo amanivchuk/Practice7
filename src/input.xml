@@ -8,8 +8,8 @@
         <Handy>One_handed</Handy>
         <Origin>USA</Origin>
         <Ttc>
-            <range>short-400</range>
-            <effectiveRange>100</effectiveRange>
+            <range>MIDDLE</range>
+            <effective>500</effective>
             <holder>true</holder>
             <optics>true</optics>
         </Ttc>
