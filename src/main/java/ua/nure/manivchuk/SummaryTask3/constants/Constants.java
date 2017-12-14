@@ -33,10 +33,4 @@ public final class Constants {
 	public static final String FEATURE_TURN_SCHEMA_VALIDATION_ON = 
 			"http://apache.org/xml/features/validation/schema";
 
-	/**
-	 * Private Constructor.
-	 */
-	protected Constants() {
-
-	}
 }

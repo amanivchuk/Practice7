@@ -1,24 +1,21 @@
 package ua.nure.manivchuk.SummaryTask3.entity;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlEnumValue;
-import javax.xml.bind.annotation.XmlType;
-
 /**
- * Created by Lenovo on 12/12/2017.
+ * Created by nec on 14.12.17.
  */
-@XmlType(name = "Handy")
-@XmlEnum
-public enum Handy {
+public enum  Handy {
+    ONE_HANDED("One_handed"), TWO_HANDED("Two_handed");
 
-    ONE_HANDED,
+    private String value;
 
-    TWO_HANDED;
-
-    public final String value(){
-        return name();
+    Handy(String value) {
+        this.value = value;
     }
-    public static Handy fromValue(final String v){
-        return valueOf(v);
+    public boolean equalsTo(String name){
+        return value.equals(name);
+    }
+
+    public String value(){
+        return value;
     }
 }

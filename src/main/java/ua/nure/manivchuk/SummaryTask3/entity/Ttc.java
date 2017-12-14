@@ -1,42 +1,37 @@
 package ua.nure.manivchuk.SummaryTask3.entity;
 
-import javax.xml.bind.annotation.*;
-
 /**
- * Created by Lenovo on 12/12/2017.
+ * Created by nec on 14.12.17.
  */
-
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Ttc", propOrder = {})
 public class Ttc {
-
-    @XmlElement(name = "Range")
-    @XmlSchemaType(name = "string")
-    private Range range;
-
-    @XmlElement(name = "Effective")
-    @XmlSchemaType(name = "nonNegativeInteger")
-    private int effective;
-
-    @XmlSchemaType(name = "boolean")
-    private boolean holder;    //  ???????
-
-    @XmlSchemaType(name = "boolean")
+    private String range;
+    private Effective effective;
+    private boolean holder;
     private boolean optics;
 
-    public Range getRange() {
+    public Ttc() {
+    }
+
+    public Ttc(String range,Effective effective, boolean holder, boolean optics) {
+        this.range = range;
+        this.effective = effective;
+        this.holder = holder;
+        this.optics = optics;
+    }
+
+    public String getRange() {
         return range;
     }
 
-    public void setRange(Range range) {
+    public void setRange(String range) {
         this.range = range;
     }
 
-    public int getEffective() {
+    public Effective getEffective() {
         return effective;
     }
 
-    public void setEffective(int effective) {
+    public void setEffective(Effective effective) {
         this.effective = effective;
     }
 

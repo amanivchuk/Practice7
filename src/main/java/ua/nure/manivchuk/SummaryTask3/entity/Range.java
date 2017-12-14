@@ -1,22 +1,23 @@
 package ua.nure.manivchuk.SummaryTask3.entity;
 
-import javax.xml.bind.annotation.XmlEnum;
-import javax.xml.bind.annotation.XmlType;
-
 /**
- * Created by Lenovo on 12/12/2017.
+ * Created by nec on 14.12.17.
  */
-@XmlType(name = "Range")
-@XmlEnum
 public enum Range {
-    SHORT,
-    MIDDLE,
-    HIGH;
+    SHORT("SHORT"),
+    MIDDLE("MIDDLE"),
+    HIGH("HIGH");
 
-    public final String value(){
-        return name();
+    private String value;
+
+    Range(String value) {
+        this.value = value;
     }
-    public static Range fromValue(final String v){
-        return valueOf(v);
+    public boolean equalsTo(String name){
+        return value.equals(name);
+    }
+
+    public String getValue(){
+        return value;
     }
 }

@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<guns>
-<gun>
+<Guns>
+<Gun>
 <Model>Model1</Model>
-<Handys/>
-<Origin>USA</Origin>
+<Handy>One_handed</Handy>
+<Origin>Origin1</Origin>
 <Ttc>
-<Effective>0</Effective>
+<Range>short-499</Range>
+<Effective>100</Effective>
+<Holder>true</Holder>
+<Optics>true</Optics>
 </Ttc>
-</gun>
-</guns>
+<Material>Material1</Material>
+</Gun>
+</Guns>

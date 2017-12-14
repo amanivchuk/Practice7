@@ -1,32 +1,25 @@
 package ua.nure.manivchuk.SummaryTask3.entity;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
-
 /**
- * Created by Lenovo on 12/12/2017.
+ * Created by nec on 14.12.17.
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Gun", propOrder = {"model", "handys", "origin", "ttc", "material"})
 public class Gun {
-
-    @XmlElement(name = "Model", required = true)
     private String model;
-
-    @XmlElement(name = "Handys", required = true)
-    private Handys handys;
-
-    @XmlElement(name = "Origin", required = true)
+    private String handy;
     private String origin;
-
-    @XmlElement(name = "Ttc", required = true)
     private Ttc ttc;
-
-    @XmlElement(name = "Material", required = true)
     private String material;
 
+    public Gun() {
+    }
+
+    public Gun(String model, String handy, String origin,Ttc ttc, String material) {
+        this.model = model;
+        this.handy = handy;
+        this.origin = origin;
+        this.ttc = ttc;
+        this.material = material;
+    }
 
     public String getModel() {
         return model;
@@ -36,12 +29,12 @@ public class Gun {
         this.model = model;
     }
 
-    public Handys getHandys() {
-        return handys;
+    public String getHandy() {
+        return handy;
     }
 
-    public void setHandys(Handys handys) {
-        this.handys = handys;
+    public void setHandy(String handy) {
+        this.handy = handy;
     }
 
     public String getOrigin() {
@@ -52,14 +45,6 @@ public class Gun {
         this.origin = origin;
     }
 
-    public Ttc getTtc() {
-        return ttc;
-    }
-
-    public void setTtc(Ttc ttc) {
-        this.ttc = ttc;
-    }
-
     public String getMaterial() {
         return material;
     }
@@ -68,14 +53,23 @@ public class Gun {
         this.material = material;
     }
 
+    public Ttc getTtc() {
+        return ttc;
+    }
+
+    public void setTtc(Ttc ttc) {
+        this.ttc = ttc;
+    }
+
     @Override
-    public String toString() {
-        return "Gun{" +
-                "model='" + model + '\'' +
-                ", handy=" + handys +
-                ", origin='" + origin + '\'' +
-                ", ttc=" + ttc +
-                ", material='" + material + '\'' +
-                '}';
+    public String toString(){
+        StringBuilder result= new StringBuilder();
+        result.append(model).append('\n').
+                append(handy).append('\n').
+                append(origin).append('\n').
+                append(ttc).append('\n').
+                append(material).append('\n');
+
+        return result.toString();
     }
 }
