@@ -2,7 +2,11 @@ package ua.nure.manivchuk.SummaryTask3.util;
 
 
 import ua.nure.manivchuk.SummaryTask3.controller.DOMController;
+import ua.nure.manivchuk.SummaryTask3.controller.SAXController;
+import ua.nure.manivchuk.SummaryTask3.controller.STAXController;
 import ua.nure.manivchuk.SummaryTask3.entity.Guns;
+import ua.nure.manivchuk.SummaryTask3.sorter.Sorter;
+import ua.nure.manivchuk.SummaryTask3.writer.XMLWriter;
 
 /**
  * Entry point for st3 example (simple version).
@@ -34,13 +38,12 @@ public class Main {
 		Guns test = domController.getGuns();
 
 		// sort (case 1)
-//		Sorter.sortQuestionsByQuestionText(test);
+		Sorter.sortByModel(test);
 		
 		// save
 		String outputXmlFile = "output.dom.xml";
-		DOMController.saveToXML(test, outputXmlFile);
+		XMLWriter.saveToXML(test, outputXmlFile);
 		System.out.println("Output ==> " + outputXmlFile);
-/*
 
 		////////////////////////////////////////////////////////
 		// SAX
@@ -49,18 +52,18 @@ public class Main {
 		// get
 		SAXController saxController = new SAXController(xmlFileName);
 		saxController.parse(true);
-		test = saxController.getTest();
+		Guns saxTest = saxController.getGuns();
 		
 		// sort  (case 2)
-		Sorter.sortQuestionsByAnswersNumber(test);
+		Sorter.setSortByEffective(saxTest);
 		
 		// save
 		outputXmlFile = "output.sax.xml";
 		
 		// other way: 
-		DOMController.saveToXML(test, outputXmlFile);
+		XMLWriter.saveToXML(saxTest, outputXmlFile);
 		System.out.println("Output ==> " + outputXmlFile);
-		
+
 		////////////////////////////////////////////////////////
 		// StAX
 		////////////////////////////////////////////////////////
@@ -68,16 +71,15 @@ public class Main {
 		// get
 		STAXController staxController = new STAXController(xmlFileName);
 		staxController.parse();
-		test = staxController.getTest();
+		Guns staxTest = staxController.getGuns();
 		
 		// sort  (case 3)
-		Sorter.sortAnswersByContent(test);
+		Sorter.setSortByOrigin(staxTest);
 		
 		// save
 		outputXmlFile = "output.stax.xml";
-		DOMController.saveToXML(test, outputXmlFile);
+		XMLWriter.saveToXML(staxTest, outputXmlFile);
 		System.out.println("Output ==> " + outputXmlFile);
-*/
 	}
 
 }

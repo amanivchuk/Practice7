@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Guns>
 <Gun>
+<Model>Model1</Model>
+<Handy>One_handed</Handy>
+<Origin>Origin1</Origin>
+<Ttc>
+<Range>short-489</Range>
+<Effective>100</Effective>
+<Holder>true</Holder>
+<Optics>true</Optics>
+</Ttc>
+<Material>Material1</Material>
+</Gun>
+<Gun>
 <Model>Adel1</Model>
 <Handy>One_handed</Handy>
 <Origin>Origin2</Origin>
@@ -23,17 +35,5 @@
 <Optics>true</Optics>
 </Ttc>
 <Material>SupMaterial</Material>
-</Gun>
-<Gun>
-<Model>Model1</Model>
-<Handy>One_handed</Handy>
-<Origin>Origin1</Origin>
-<Ttc>
-<Range>short-489</Range>
-<Effective>100</Effective>
-<Holder>true</Holder>
-<Optics>true</Optics>
-</Ttc>
-<Material>Material1</Material>
 </Gun>
 </Guns>
